@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Health Locker</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Health Locker</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="overview">
+                <i class="fas fa-home"></i>
+                <span>Overview</span>
+            </a>
+            <a href="#" class="nav-item" data-page="verification">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Mobile Demo</span>
+            </a>
+            <a href="#" class="nav-item" data-page="supply-chain">
+                <i class="fas fa-link"></i>
+                <span>Supply Chain</span>
+            </a>
+            <a href="#" class="nav-item" data-page="credentials">
+                <i class="fas fa-certificate"></i>
+                <span>Credentials</span>
+            </a>
+            <a href="#" class="nav-item" data-page="notifications">
+                <i class="fas fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notification-badge">3</span>
+            </a>
+            <a href="#" class="nav-item" data-page="analytics">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            <a href="#" class="nav-item" data-page="profile">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">JD</div>
+                <div class="user-details">
+                    <div class="user-name">Dr. Jane Doe</div>
+                    <div class="user-role">Healthcare Provider</div>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="page-title">Dashboard Overview</h1>
+            </div>
+            <div class="header-right">
+                <div class="header-notifications">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                </div>
+                <div class="header-user">
+                    <div class="user-avatar-small">JD</div>
+                    <span class="user-greeting">Welcome, Dr. Doe</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Page -->
+            <div id="overview-page" class="page-content active">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">1,247</div>
+                            <div class="stat-label">Verifications Today</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +12% from yesterday
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Critical Alerts</div>
+                            <div class="stat-change warning">
+                                <i class="fas fa-clock"></i>
+                                Requires attention
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">99.8%</div>
+                            <div class="stat-label">Success Rate</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +0.2% this month
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">2.3s</div>
+                            <div class="stat-label">Avg. Verification Time</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-down"></i>
+                                -0.5s improvement
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="actions-grid">
+                        <button class="action-card" onclick="navigateToPage('verification')">
+                            <div class="action-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="action-content">
+                                <h3>Mobile Verification</h3>
+                                <p>Run zero-knowledge proofs on device</p>
+                            </div>
+                            <i class="fas fa-arrow-right action-arrow"></i>
+                        </button>
+                        <button class="action-card" onclick="navigateToPage('supply-chain')">
+                            <div class="action-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <div class="action-content">
+                                <h3>Supply Chain</h3>
+                                <p>Track and verify supply chains</p>
+                            </div>
+                            <i class="fas fa-arrow-right action-arrow"></i>
+                        </button>
+                        <button class="action-card" onclick="navigateToPage('credentials')">
+                            <div class="action-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="action-content">
+                                <h3>Credentials</h3>
+                                <p>Manage verifiable credentials</p>
+                            </div>
+                            <i class="fas fa-arrow-right action-arrow"></i>
+                        </button>
+                        <button class="action-card" onclick="navigateToPage('analytics')">
+                            <div class="action-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="action-content">
+                                <h3>Analytics</h3>
+                                <p>View verification statistics</p>
+                            </div>
+                            <i class="fas fa-arrow-right action-arrow"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Supply Chain Verified</div>
+                                <div class="activity-desc">Insulin batch #INS-2024-12345 verified successfully</div>
+                                <div class="activity-time">2 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Low Stock Alert</div>
+                                <div class="activity-desc">Mask inventory below threshold at LA Shelter</div>
+                                <div class="activity-time">15 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon info">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">New Credential Issued</div>
+                                <div class="activity-desc">Temperature compliance certificate added to wallet</div>
+                                <div class="activity-time">1 hour ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Location Proof Generated</div>
+                                <div class="activity-desc">Delivery verified at NYC Community Clinic</div>
+                                <div class="activity-time">2 hours ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Status -->
+                <div class="system-status">
+                    <h2>System Status</h2>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <div class="status-indicator online"></div>
+                            <div class="status-info">
+                                <div class="status-name">Base L2 Network</div>
+                                <div class="status-desc">All systems operational</div>
+                            </div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-indicator online"></div>
+                            <div class="status-info">
+                                <div class="status-name">Zero-Knowledge Services</div>
+                                <div class="status-desc">Proof generation active</div>
+                            </div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-indicator warning"></div>
+                            <div class="status-info">
+                                <div class="status-name">Supply Chain Monitor</div>
+                                <div class="status-desc">3 alerts pending review</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Demo Page (Integrated) -->
+            <div id="verification-page" class="page-content">
+                <div class="mobile-demo-container">
+                    <!-- Phone Frame -->
+                    <div class="phone-frame">
+                        <div class="notch"></div>
+                        <div class="power-btn"></div>
+                        <div class="volume-btns"></div>
+
+                        <!-- Screen Content -->
+                        <div class="screen">
+                            <!-- Status Bar -->
+                            <div class="status-bar">
+                                <div class="time">9:41</div>
+                                <div class="status-icons">
+                                    <span class="signal-icon" id="signal-icon">Cellular</span>
+                                    <span class="wifi-icon" id="wifi-icon">WiFi</span>
+                                    <span class="battery-icon">100%</span>
+                                </div>
+                            </div>
+
+                            <!-- App Header -->
+                            <header class="app-header">
+                                <div class="menu-icon">☰</div>
+                                <h1>Health Locker</h1>
+                                <div class="profile-icon">DU</div>
+                            </header>
+
+                            <!-- Main Scroll View -->
+                            <div class="content-scroll">
+                                <!-- HOME VIEW -->
+                                <div id="home-view">
+                                    <!-- Hero Card -->
+                                    <div class="card hero-card">
+                                        <div class="card-label">Supply Status</div>
+                                        <div class="big-stat">Critical</div>
+                                        <div class="sub-stat">2 Locations at Risk</div>
+                                    </div>
+
+                                    <!-- Demo Section -->
+                                    <div class="demo-section">
+                                        <div class="section-header">
+                                            <h2>🔒 Private Verification</h2>
+                                        </div>
+
+                                        <div class="control-row">
+                                            <div class="control-info">
+                                                <span class="icon">✈️</span>
+                                                <div class="text">
+                                                    <div class="title">Airplane Mode</div>
+                                                    <div class="subtitle">Simulate offline privacy</div>
+                                                </div>
+                                            </div>
+                                            <label class="ios-switch">
+                                                <input type="checkbox" id="airplane-toggle">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+
+                                        <div class="action-card">
+                                            <h3>1. Generate Proof (Local)</h3>
+                                            <p>Run AI model on-device. No data leaves this phone.</p>
+                                            <button class="btn-primary" id="generate-btn">
+                                                <span class="btn-icon">⚙️</span> Generate zk-Proof
+                                            </button>
+                                            <div class="terminal-output" id="terminal-output" style="display: none;"></div>
+                                        </div>
+
+                                        <div class="action-card disabled" id="submit-card">
+                                            <h3>2. Verify On-Chain</h3>
+                                            <p>Reconnect to submit <b>only</b> the proof to Base L2.</p>
+                                            <button class="btn-secondary" id="submit-btn" disabled>
+                                                <span class="btn-icon">☁️</span> Submit to Base
+                                            </button>
+                                            <div class="status-msg" id="submit-status"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- DELIVERY VIEW -->
+                                <div id="delivery-view" style="display: none;">
+                                    <div class="card hero-card" style="background: linear-gradient(135deg, #0a84ff 0%, #0056b3 100%);">
+                                        <div class="card-label">Active Delivery</div>
+                                        <div class="big-stat">En Route</div>
+                                        <div class="sub-stat">To: NYC Community Clinic</div>
+                                    </div>
+                                    <div class="demo-section">
+                                        <div class="section-header">
+                                            <h2>📍 zk-Location Proof</h2>
+                                        </div>
+                                        <div class="action-card">
+                                            <h3>Verify Arrival (Geofence)</h3>
+                                            <p>Prove you are within 50m of the destination without revealing your exact GPS coordinates.</p>
+                                            <div class="gps-status">
+                                                <div class="gps-row">
+                                                    <span>Your Location:</span>
+                                                    <span class="blur-text">40.7128° N, 74.0060° W</span>
+                                                    <span class="badge-private">PRIVATE</span>
+                                                </div>
+                                                <div class="gps-row">
+                                                    <span>Target:</span>
+                                                    <span>NYC Clinic (Zone A)</span>
+                                                </div>
+                                            </div>
+                                            <button class="btn-primary" id="verify-loc-btn">
+                                                <span class="btn-icon">🛰️</span> Generate Location Proof
+                                            </button>
+                                            <div class="terminal-output" id="loc-terminal" style="display: none;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- CREDENTIALS VIEW -->
+                                <div id="credentials-view" style="display: none;">
+                                    <div class="card hero-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                        <div class="card-label">Your Wallet</div>
+                                        <div class="big-stat" style="color: white;">3 Credentials</div>
+                                        <div class="sub-stat" style="color: rgba(255,255,255,0.8);">Supply Chain Verified</div>
+                                    </div>
+                                    <div class="demo-section">
+                                        <div class="section-header">
+                                            <h2>🪪 Verifiable Credentials</h2>
+                                        </div>
+
+                                        <div class="credential-card user-credential">
+                                            <div class="credential-header">
+                                                <div class="credential-icon">👤</div>
+                                                <div class="credential-info">
+                                                    <div class="credential-title">Patient Authorization</div>
+                                                    <div class="credential-issuer">Issued by: NYC Health Dept</div>
+                                                </div>
+                                            </div>
+                                            <div class="credential-body">
+                                                <div class="credential-claim">
+                                                    <span class="claim-label">Prescription:</span>
+                                                    <span class="claim-value">
+                                                        <span class="blur-text">Insulin Type-1</span>
+                                                        <span class="badge-private">PRIVATE</span>
+                                                    </span>
+                                                </div>
+                                                <div class="credential-claim">
+                                                    <span class="claim-label">Authorization:</span>
+                                                    <span class="claim-value claim-verified">Valid ✓</span>
+                                                </div>
+                                            </div>
+                                            <div class="credential-badge verified">Verified ✓</div>
+                                        </div>
+
+                                        <div class="action-card">
+                                            <h3>Verify Complete Supply Chain</h3>
+                                            <p>Check the trust chain from manufacturer to delivery.</p>
+                                            <button class="btn-primary" id="verify-chain-btn">
+                                                <span class="btn-icon">🔗</span> Verify Supply Chain
+                                            </button>
+                                            <div class="terminal-output" id="chain-terminal" style="display: none;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Nav -->
+                            <nav class="bottom-nav">
+                                <div class="nav-btn active" id="nav-home">🏠</div>
+                                <div class="nav-btn" id="nav-delivery">🚚</div>
+                                <div class="nav-btn" id="nav-credentials">🛡️</div>
+                                <div class="nav-btn">⚙️</div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other pages will be loaded dynamically -->
+            <div id="supply-chain-page" class="page-content">
+                <div class="page-placeholder">
+                    <i class="fas fa-link"></i>
+                    <h3>Supply Chain Management</h3>
+                    <p>Track and verify complete supply chains from manufacturer to patient.</p>
+                    <p class="coming-soon">Coming Soon</p>
+                </div>
+            </div>
+
+            <div id="credentials-page" class="page-content">
+                <div class="page-placeholder">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Verifiable Credentials</h3>
+                    <p>Manage your digital certificates and verify authenticity.</p>
+                    <p class="coming-soon">Coming Soon</p>
+                </div>
+            </div>
+
+            <div id="notifications-page" class="page-content">
+                <div class="page-placeholder">
+                    <i class="fas fa-bell"></i>
+                    <h3>Notifications</h3>
+                    <p>Stay updated with alerts and verification status.</p>
+                    <p class="coming-soon">Coming Soon</p>
+                </div>
+            </div>
+
+            <div id="analytics-page" class="page-content">
+                <div class="page-placeholder">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Comprehensive insights into verification performance.</p>
+                    <p class="coming-soon">Coming Soon</p>
+                </div>
+            </div>
+
+            <div id="profile-page" class="page-content">
+                <div class="page-placeholder">
+                    <i class="fas fa-user"></i>
+                    <h3>Profile Settings</h3>
+                    <p>Manage your account and security preferences.</p>
+                    <p class="coming-soon">Coming Soon</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

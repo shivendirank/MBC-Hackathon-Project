@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Locker - Secure Supply Chain Verification</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/landing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Health Locker</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#security">Security</a>
+                <a href="#contact">Contact</a>
+                <button class="btn-primary" onclick="showLogin()">Get Started</button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-lock"></i>
+                    Privacy-First Healthcare
+                </div>
+                <h1 class="hero-title">
+                    Secure Your<br>
+                    <span class="gradient-text">Healthcare Supply Chain</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Verify medication authenticity and track supply chains with zero-knowledge proofs.
+                    Your health data stays private while ensuring trust and transparency.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary btn-large" onclick="showLogin()">
+                        <i class="fas fa-rocket"></i>
+                        Start Verifying
+                    </button>
+                    <button class="btn-secondary btn-large" onclick="scrollToSection('features')">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10M+</span>
+                        <span class="stat-label">Verifications</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">256-bit</span>
+                        <span class="stat-label">Encryption</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="app-preview">
+                                <div class="preview-header">
+                                    <div class="status-bar">
+                                        <span>9:41</span>
+                                        <div class="status-icons">
+                                            <i class="fas fa-signal"></i>
+                                            <i class="fas fa-wifi"></i>
+                                            <i class="fas fa-battery-full"></i>
+                                        </div>
+                                    </div>
+                                    <div class="app-header">
+                                        <i class="fas fa-bars"></i>
+                                        <span>Health Locker</span>
+                                        <div class="profile-avatar">HL</div>
+                                    </div>
+                                </div>
+                                <div class="preview-content">
+                                    <div class="preview-card critical">
+                                        <div class="card-icon">⚠️</div>
+                                        <div class="card-content">
+                                            <div class="card-label">Supply Status</div>
+                                            <div class="card-title">Critical Alert</div>
+                                            <div class="card-subtitle">2 Locations at Risk</div>
+                                        </div>
+                                    </div>
+                                    <div class="preview-feature">
+                                        <div class="feature-icon">🔒</div>
+                                        <div class="feature-content">
+                                            <div class="feature-title">Private Verification</div>
+                                            <div class="feature-desc">Zero-knowledge proofs on device</div>
+                                        </div>
+                                        <div class="feature-toggle">
+                                            <div class="toggle active"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg-pattern"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Advanced Healthcare Security</h2>
+                <p>Three powerful technologies working together to protect your health</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>zkML Verification</h3>
+                    <p>Run AI models on your device to verify supply predictions without revealing sensitive data.</p>
+                    <ul class="feature-list">
+                        <li>✨ On-device computation</li>
+                        <li>🔒 Zero data leakage</li>
+                        <li>⚡ Real-time predictions</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>zkLocation Proofs</h3>
+                    <p>Prove you're at the right location without sharing your exact GPS coordinates.</p>
+                    <ul class="feature-list">
+                        <li>📍 Geofence verification</li>
+                        <li>🛡️ Location privacy</li>
+                        <li>🎯 Precise delivery tracking</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Verifiable Credentials</h3>
+                    <p>Digital certificates that prove authenticity from manufacturer to patient.</p>
+                    <ul class="feature-list">
+                        <li>🏭 Supply chain traceability</li>
+                        <li>✅ Tamper-proof records</li>
+                        <li>🔗 Trust verification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Simple, secure, and privacy-preserving healthcare verification</p>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Download & Install</h3>
+                    <p>Get the Health Locker app from your app store and create your secure wallet.</p>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Generate Proofs</h3>
+                    <p>Run privacy-preserving computations on your device to verify supply chains.</p>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Verify & Trust</h3>
+                    <p>Submit zero-knowledge proofs to the blockchain for immutable verification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="security">
+        <div class="container">
+            <div class="section-header">
+                <h2>Enterprise-Grade Security</h2>
+                <p>Built with cutting-edge cryptography and privacy-preserving technologies</p>
+            </div>
+            <div class="security-grid">
+                <div class="security-item">
+                    <div class="security-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4>Zero-Knowledge Proofs</h4>
+                    <p>Prove statements without revealing underlying data using advanced cryptographic protocols.</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>Local Computation</h4>
+                    <p>All sensitive processing happens on your device. No health data leaves your phone.</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h4>Blockchain Verification</h4>
+                    <p>Immutable proof storage on Base L2 with cryptographic verification of all transactions.</p>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h4>Privacy by Design</h4>
+                    <p>Built from the ground up with privacy as the primary consideration, not an afterthought.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Secure Healthcare?</h2>
+                <p>Join thousands of healthcare providers already using Health Locker to ensure supply chain integrity.</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary btn-large" onclick="showLogin()">
+                        <i class="fas fa-user-plus"></i>
+                        Create Account
+                    </button>
+                    <button class="btn-secondary btn-large">
+                        <i class="fas fa-building"></i>
+                        For Organizations
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Health Locker</span>
+                    </div>
+                    <p>Securing healthcare supply chains with privacy-preserving technology.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#security">Security</a>
+                        <a href="#how-it-works">How It Works</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#about">About</a>
+                        <a href="#careers">Careers</a>
+                        <a href="#press">Press</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="#help">Help Center</a>
+                        <a href="#docs">Documentation</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Health Locker. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
