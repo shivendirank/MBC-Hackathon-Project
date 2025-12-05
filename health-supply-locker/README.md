@@ -148,6 +148,7 @@ health-supply-locker/
 - Animated counters
 - Status indicators
 - Notification system
+- ⭐ Review & Rating System
 
 ## 🔧 Development
 

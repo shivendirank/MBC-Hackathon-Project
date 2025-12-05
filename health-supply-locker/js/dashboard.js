@@ -564,7 +564,194 @@ function initializeMobileDemo() {
     }
 }
 
+// Reviews System
+function showReviewModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.id = 'review-modal';
+    modal.innerHTML = `
+        <div class="modal-content review-modal">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Write a Review</h3>
+                <p>Share your experience with Health Locker</p>
+            </div>
+            <div class="modal-body">
+                <form class="review-form" onsubmit="submitReview(event)">
+                    <div class="star-rating" id="star-rating">
+                        <i class="fas fa-star" data-rating="1"></i>
+                        <i class="fas fa-star" data-rating="2"></i>
+                        <i class="fas fa-star" data-rating="3"></i>
+                        <i class="fas fa-star" data-rating="4"></i>
+                        <i class="fas fa-star" data-rating="5"></i>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-title">Review Title</label>
+                        <input
+                            type="text"
+                            id="review-title"
+                            placeholder="Summarize your experience"
+                            required
+                            maxlength="100"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="review-content">Your Review</label>
+                        <textarea
+                            id="review-content"
+                            placeholder="Tell us about your experience with Health Locker's privacy-preserving features..."
+                            required
+                            maxlength="1000"
+                        ></textarea>
+                        <div class="char-count">
+                            <span id="char-count">0</span>/1000 characters
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewer-role">Your Role</label>
+                        <select id="reviewer-role" required>
+                            <option value="">Select your role</option>
+                            <option value="Healthcare Provider">Healthcare Provider</option>
+                            <option value="Pharmacist">Pharmacist</option>
+                            <option value="Administrator">Administrator</option>
+                            <option value="Patient">Patient</option>
+                            <option value="Researcher">Researcher</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="hideModal('review-modal')">Cancel</button>
+                <button type="submit" class="btn-primary" form="review-form">Submit Review</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    showModal('review-modal');
+    initializeStarRating();
+    initializeCharCount();
+}
+
+function initializeStarRating() {
+    const stars = document.querySelectorAll('#star-rating i');
+    let selectedRating = 0;
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', function() {
+            selectedRating = parseInt(this.dataset.rating);
+            updateStarRating(selectedRating);
+        });
+
+        star.addEventListener('mouseover', function() {
+            const rating = parseInt(this.dataset.rating);
+            updateStarRating(rating, false);
+        });
+
+        star.addEventListener('mouseout', function() {
+            updateStarRating(selectedRating);
+        });
+    });
+}
+
+function updateStarRating(rating, permanent = true) {
+    const stars = document.querySelectorAll('#star-rating i');
+
+    stars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.add('active');
+        } else {
+            star.classList.remove('active');
+        }
+    });
+
+    if (permanent) {
+        // Store the rating for form submission
+        document.getElementById('star-rating').dataset.selectedRating = rating;
+    }
+}
+
+function initializeCharCount() {
+    const textarea = document.getElementById('review-content');
+    const charCount = document.getElementById('char-count');
+
+    textarea.addEventListener('input', function() {
+        const count = this.value.length;
+        charCount.textContent = count;
+        charCount.style.color = count > 900 ? '#ef4444' : '#666';
+    });
+}
+
+async function submitReview(event) {
+    event.preventDefault();
+
+    const rating = document.getElementById('star-rating').dataset.selectedRating;
+    const title = document.getElementById('review-title').value.trim();
+    const content = document.getElementById('review-content').value.trim();
+    const role = document.getElementById('reviewer-role').value;
+
+    if (!rating || rating === '0') {
+        showToast('Please select a star rating', 'error');
+        return;
+    }
+
+    if (!title || !content || !role) {
+        showToast('Please fill in all fields', 'error');
+        return;
+    }
+
+    // Show loading
+    showSpinner();
+
+    try {
+        // Simulate API call
+        await simulateApiCall(2000);
+
+        // Create review object
+        const review = {
+            id: Date.now(),
+            rating: parseInt(rating),
+            title: title,
+            content: content,
+            role: role,
+            author: Storage.get('currentUser')?.firstName + ' ' + Storage.get('currentUser')?.lastName || 'Anonymous',
+            date: new Date().toISOString(),
+            helpful: 0
+        };
+
+        // Store review (in a real app, this would go to a database)
+        const reviews = Storage.get('reviews', []);
+        reviews.unshift(review);
+        Storage.set('reviews', reviews);
+
+        showToast('Thank you for your review!', 'success');
+        hideModal('review-modal');
+
+        // Refresh reviews page if currently viewing it
+        if (document.getElementById('reviews-page').classList.contains('active')) {
+            navigateToPage('reviews');
+        }
+
+    } catch (error) {
+        showToast('Failed to submit review. Please try again.', 'error');
+    } finally {
+        hideSpinner();
+    }
+}
+
+// Simulate API call (for demo purposes)
+function simulateApiCall(delay = 1000) {
+    return new Promise(resolve => {
+        setTimeout(resolve, delay);
+    });
+}
+
 // Export functions for global use
 window.navigateToPage = navigateToPage;
 window.logout = logout;
 window.refreshDashboard = refreshDashboard;
+window.showReviewModal = showReviewModal;
+window.submitReview = submitReview;
